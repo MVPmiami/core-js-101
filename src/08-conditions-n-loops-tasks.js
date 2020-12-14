@@ -51,8 +51,12 @@ function getFizzBuzz(num) {
  *   5  => 120
  *   10 => 3628800
  */
-function getFactorial(/* n */) {
-  throw new Error('Not implemented');
+function getFactorial(n) {
+  let result = 1;
+  for (let i = 1; i <= n; i += 1) {
+    result *= i;
+  }
+  return result;
 }
 
 
@@ -68,8 +72,15 @@ function getFactorial(/* n */) {
  *   5,10  =>  45 ( = 5+6+7+8+9+10 )
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
-function getSumBetweenNumbers(/* n1, n2 */) {
-  throw new Error('Not implemented');
+function getSumBetweenNumbers(n1, n2) {
+  const difference = n2 - n1;
+  let count = n1;
+  let result = 0;
+  for (let i = 0; i <= difference; i += 1) {
+    result += count;
+    count += 1;
+  }
+  return result;
 }
 
 
@@ -88,8 +99,11 @@ function getSumBetweenNumbers(/* n1, n2 */) {
  *   10,1,1   =>  false
  *   10,10,10 =>  true
  */
-function isTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isTriangle(a, b, c) {
+  if (a + b <= c || a + c <= b || b + c <= a) {
+    return false;
+  }
+  return true;
 }
 
 
@@ -172,8 +186,14 @@ function isInsideCircle(/* circle, point */) {
  *   'abracadabra'  => 'c'
  *   'entente' => null
  */
-function findFirstSingleChar(/* str */) {
-  throw new Error('Not implemented');
+function findFirstSingleChar(str) {
+  for (let i = 0; i < str.length; i += 1) {
+    const result = str.charAt(i);
+    if (str.indexOf(result) === i && str.indexOf(result, i + 1) === -1) {
+      return result;
+    }
+  }
+  return null;
 }
 
 
@@ -216,8 +236,17 @@ function getIntervalString(/* a, b, isStartIncluded, isEndIncluded */) {
  * 'rotator' => 'rotator'
  * 'noon' => 'noon'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
+function reverseString(str) {
+  let arr = str.split('');
+  let result = '';
+  arr = arr.reverse().toString();
+
+  for (let i = 0; i < arr.length; i += 1) {
+    if (arr[i] !== ',') {
+      result += arr[i];
+    }
+  }
+  return result;
 }
 
 
@@ -233,8 +262,18 @@ function reverseString(/* str */) {
  *   87354 => 45378
  *   34143 => 34143
  */
-function reverseInteger(/* num */) {
-  throw new Error('Not implemented');
+function reverseInteger(num) {
+  const newNum = String(num);
+  let arr = newNum.split('');
+  let result = '';
+  arr = arr.reverse().toString();
+
+  for (let i = 0; i < arr.length; i += 1) {
+    if (arr[i] !== ',') {
+      result += arr[i];
+    }
+  }
+  return result;
 }
 
 
@@ -248,6 +287,7 @@ function reverseInteger(/* num */) {
  * @return {boolean}
  *
  * @example:
+ *
  *   79927398713      => true
  *   4012888888881881 => true
  *   5123456789012346 => true
@@ -260,6 +300,40 @@ function reverseInteger(/* num */) {
  */
 function isCreditCardNumber(/* ccn */) {
   throw new Error('Not implemented');
+  /* const strCnn = String(ccn);
+  let arr = strCnn.split('');
+  const currentNum = +arr[arr.length - 1];
+  arr = arr.splice(0, arr.length - 1);
+  const doublNum = [];
+  let sum = 0;
+  for (let i = arr.length - 1; i >= 0; i -= 1) {
+    doublNum.push(arr[i]);
+  }
+  const doubleArr = doublNum.map((item, index) => {
+    if (index === 0) {
+      return item * 2;
+    }
+    if (index % 2 === 0) {
+      let it = item;
+      it *= 2;
+      if (it > 9) {
+        it -= 9;
+      }
+      return it;
+    }
+    return item;
+  });
+
+  for (let i = 0; i < doubleArr.length; i += 1) {
+    doubleArr[i] = +doubleArr[i];
+  }
+  for (let i = 0; i < doubleArr.length; i += 1) {
+    sum += doubleArr[i];
+  }
+  if ((sum + currentNum) % 10 === 0) {
+    return true;
+  }
+  return false; */
 }
 
 /**
